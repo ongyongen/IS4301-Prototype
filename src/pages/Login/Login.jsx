@@ -4,9 +4,7 @@ import LoginImg from '../../../public/img/login.png';
 import { useState } from 'react';
 import { Banner } from '../../components/Banner/Banner';
 import { ERROR_BANNER } from '../../components/Banner/Banner.config';
-
 import { UserAuth } from '../../context/AuthContext';
-
 import { useNavigate } from 'react-router-dom';
 import { Spinner } from '../../components/Spinner/Spinner';
 import { LoginForm } from './LoginForm';
