@@ -8,6 +8,7 @@ import { UserAuth } from '../../context/AuthContext';
 import { useNavigate } from 'react-router-dom';
 import { Spinner } from '../../components/Spinner/Spinner';
 import { LoginForm } from './LoginForm';
+import { CHATBOT_INSIGHTS_DASHBOARD_PAGE } from '../../constants/routes';
 
 import {
     FIREBASE_USER_NOT_FOUND_MESSAGE,
@@ -32,7 +33,7 @@ const Login = () => {
         try {
             setShowSpinner(true);
             await signIn(email, password);
-            navigate('/');
+            navigate(CHATBOT_INSIGHTS_DASHBOARD_PAGE);
         } catch (e) {
             setShowSpinner(false);
             if (e.message === FIREBASE_USER_NOT_FOUND_MESSAGE) {

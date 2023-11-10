@@ -1,4 +1,4 @@
-import { LANDING_PAGE, HOME_PAGE, LOGIN_PAGE, SIGNUP_PAGE } from '../../constants/routes';
+import { LANDING_PAGE, CHATBOT_INSIGHTS_DASHBOARD_PAGE, LOGIN_PAGE, SIGNUP_PAGE, CUSTOMER_INSIGHTS_DASHBOARD_PAGE } from '../../constants/routes';
 import { UserAuth } from '../../context/AuthContext';
 import { useNavigate } from 'react-router-dom';
 
@@ -9,7 +9,7 @@ export const Navbar = () => {
     const handleLogout = async () => {
         try {
             await logout();
-            navigate('/home');
+            navigate("/");
         } catch (e) {
             console.log(e.message);
         }
@@ -19,7 +19,7 @@ export const Navbar = () => {
         <>
             {!user && (
                 <>
-                    <ul className="flex flex-wrap text-lg ml-10">
+                    <ul className="flex flex-wrap text-md ml-10">
                         <li className="mr-6">
                             <a
                                 className="text-purple-500 hover:text-purple-800"
@@ -49,19 +49,27 @@ export const Navbar = () => {
             )}
             {user && (
                 <>
-                    <ul className="flex flex-wrap text-lg ml-10">
+                    <ul className="flex flex-wrap text-md ml-10">
                         <li className="mr-6">
                             <a
                                 className="text-purple-500 hover:text-purple-800"
-                                href={HOME_PAGE}
+                                href={CHATBOT_INSIGHTS_DASHBOARD_PAGE}
                             >
-                                Home
+                                Chatbot Insights
                             </a>
                         </li>
                         <li className="mr-6">
                             <a
                                 className="text-purple-500 hover:text-purple-800"
-                                href={HOME_PAGE}
+                                href={CUSTOMER_INSIGHTS_DASHBOARD_PAGE}
+                            >
+                                Customer Insights
+                            </a>
+                        </li>
+                        <li className="mr-6">
+                            <a
+                                className="text-purple-500 hover:text-purple-800"
+                                href={LANDING_PAGE}
                                 onClick={handleLogout}
                             >
                                 Log Out
