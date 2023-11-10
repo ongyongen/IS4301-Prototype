@@ -47,13 +47,13 @@ const Login = () => {
 
     return (
         <Layout>
-            <div className="flex flex-col mt-20 items-center">
-                <div className="mb-6">{showSpinner && <Spinner />}</div>
-                {loginError && (
+            <div className="flex flex-col items-center">
+                {showSpinner && <div className="mb-6"><Spinner /></div>}
+                {!showSpinner && loginError && (
                     <Banner
                         message={loginError}
                         bannerType={ERROR_BANNER}
-                        className="mb-10 w-2/6"
+                        className="mb-6 w-2/6"
                     />
                 )}
                 <div className="w-1/5">

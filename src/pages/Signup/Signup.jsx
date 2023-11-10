@@ -63,9 +63,9 @@ const Signup = () => {
 
     return (
         <Layout>
-            <div className="flex flex-col mt-6 items-center">
-                <div className="mb-6">{showSpinner && <Spinner />}</div>
-                {signupError && (
+            <div className="flex flex-col items-center">
+                {showSpinner && <div className="mb-6"><Spinner /></div>}
+                {!showSpinner && signupError && (
                     <Banner
                         message={signupError}
                         bannerType={ERROR_BANNER}

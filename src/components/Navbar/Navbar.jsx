@@ -1,4 +1,4 @@
-import { HOME_PAGE, LOGIN_PAGE, SIGNUP_PAGE } from '../../constants/routes';
+import { LANDING_PAGE, HOME_PAGE, LOGIN_PAGE, SIGNUP_PAGE } from '../../constants/routes';
 import { UserAuth } from '../../context/AuthContext';
 import { useNavigate } from 'react-router-dom';
 
@@ -23,7 +23,7 @@ export const Navbar = () => {
                         <li className="mr-6">
                             <a
                                 className="text-purple-500 hover:text-purple-800"
-                                href={HOME_PAGE}
+                                href={LANDING_PAGE}
                             >
                                 Home
                             </a>
