@@ -66,7 +66,7 @@ const CustomerInsights = () => {
             <div className='mt-10 mb-10 justify-evenly flex w-full flex-row'>
                 <div className="flex flex-row">
                     <div className='w-1/2 mr-20'>
-                        <p className="p-6 text-xl">Most Common Query Categories</p>
+                        <p className="p-6">Most Common Query Categories</p>
                         <ResponsiveContainer width={500} height={300}>
                             <RadarChart cx="50%" cy="50%" outerRadius="80%" data={data_1}>
                                 <PolarGrid />
@@ -77,7 +77,7 @@ const CustomerInsights = () => {
                         </ResponsiveContainer>
                     </div>
                     <div className='w-1/2'>
-                        <p className="p-6 text-xl">Complementary Products / Services Used</p>
+                        <p className="p-6">Complementary Products / Services Used</p>
                         <ResponsiveContainer width={500} height={300}>
                             <RadarChart cx="50%" cy="50%" outerRadius="80%" data={data_2}>
                                 <PolarGrid />
@@ -89,82 +89,7 @@ const CustomerInsights = () => {
                     </div>
                 </div>
             </div>
-            <div className='mt-10 mb-10 justify-evenly flex w-full flex-row'>
-                <div className="flex flex-row">
-                    <div className='w-1/2'>
-                        <p className="p-6">New Signups</p>
-                        <LineChart
-                            width={500}
-                            height={300}
-                            data={data_3}
-                            margin={{
-                                top: 5,
-                                right: 30,
-                                left: 20,
-                                bottom: 5,
-                            }}
-                        >
-                            <CartesianGrid strokeDasharray="3 3" />
-                            <XAxis dataKey="name" />
-                            <YAxis />
-                            <Tooltip />
-                            <Legend />
-                            <Line type="monotone" dataKey="signups" stroke="#82ca9d" />
-                        </LineChart>
-                    </div>
-                    <div className='w-1/2'>
-                        <p className="p-6">Customer Churn Rate</p>
-                        <LineChart
-                            width={500}
-                            height={300}
-                            data={data_4}
-                            margin={{
-                                top: 5,
-                                right: 30,
-                                left: 20,
-                                bottom: 5,
-                            }}
-                        >
-                            <CartesianGrid strokeDasharray="3 3" />
-                            <XAxis dataKey="name" />
-                            <YAxis />
-                            <Tooltip />
-                            <Legend />
-                            <Line type="monotone" dataKey="churn" stroke="#82ca9d" />
-                        </LineChart>
-                    </div>
-                </div>
-            </div>
-
-            <div className='mt-10 mb-10 justify-evenly flex w-full flex-row'>
-                <div className="flex flex-row">
-                    <div className='w-1/2'>
-                        <p className="p-6">Number of signups made on chatbot</p>
-                        <BarChart
-                            width={1000}
-                            height={300}
-                            data={data_5}
-                            margin={{
-                                top: 5,
-                                right: 30,
-                                left: 20,
-                                bottom: 5,
-                            }}
-                        >
-                            <CartesianGrid strokeDasharray="3 3" />
-                            <XAxis dataKey="name"
-                                tick={{ fontSize: 12 }}
-                                tickLine={false}
-                                width={300}
-                            />
-                            <YAxis />
-                            <Tooltip />
-                            <Legend />
-                            <Bar dataKey="signups" fill="#82ca9d" activeBar={<Rectangle fill="gold" stroke="purple" />} />
-                        </BarChart>
-                    </div>
-                </div>
-            </div>
+          
         </Layout>
     );
 };

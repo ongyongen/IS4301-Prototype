@@ -4,6 +4,7 @@ import Landing from './pages/Landing/Landing.jsx';
 import Signup from './pages/Signup/Signup';
 import Login from './pages/Login/Login';
 import ChatbotInsights from "./pages/ChatbotInsights/ChatbotInsights";
+import { CustomerTable } from './pages/CustomerTable/CustomerTable';
 
 import { AuthContextProvider } from './context/AuthContext';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
@@ -18,6 +19,7 @@ ReactDOM.createRoot(document.getElementById('root')).render(
                 <Route path="/login" element={<Login />} />
                 <Route path="/chatbot-insights" element={<ChatbotInsights />} />
                 <Route path="/customer-insights" element={<CustomerInsights />} />
+                <Route path="/customer-table" element={<CustomerTable />} />
             </Routes>
         </BrowserRouter>
     </AuthContextProvider>,

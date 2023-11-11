@@ -110,7 +110,7 @@ const ChatbotInsights = () => {
                             <YAxis />
                             <Tooltip />
                             <Legend />
-                            <Line type="monotone" dataKey="success_rate" stroke="#82ca9d" />
+                            <Line type="monotone" dataKey="success_rate" stroke="#ce9fed" />
                         </LineChart>
                     </div>
                 </div>
@@ -128,7 +128,7 @@ const ChatbotInsights = () => {
                                 cx="50%"
                                 cy="50%"
                                 outerRadius={80}
-                                fill="#8884d8"
+                                fill="#9cccf7"
                                 label
                             />
                             <Tooltip />
@@ -144,7 +144,7 @@ const ChatbotInsights = () => {
                                 cx="50%"
                                 cy="50%"
                                 outerRadius={80}
-                                fill="#8884d8"
+                                fill="#9cccf7"
                                 label
                             />
                             <Tooltip />
@@ -177,7 +177,7 @@ const ChatbotInsights = () => {
                             <YAxis />
                             <Tooltip />
                             <Legend />
-                            <Bar dataKey="usage_rate" fill="#82ca9d" activeBar={<Rectangle fill="gold" stroke="purple" />} />
+                            <Bar dataKey="usage_rate" fill="#82ca9d" activeBar={<Rectangle fill="gold" stroke="#82ca9d" />} />
                         </BarChart>
                     </div>
                     <div className='w-1/2'>
@@ -202,7 +202,7 @@ const ChatbotInsights = () => {
                             <YAxis />
                             <Tooltip />
                             <Legend />
-                            <Bar dataKey="usage_rate" fill="#82ca9d" activeBar={<Rectangle fill="gold" stroke="purple" />} />
+                            <Bar dataKey="usage_rate" fill="#82ca9d" activeBar={<Rectangle fill="gold" stroke="#82ca9d" />} />
                         </BarChart>
                     </div>
                 </div>
