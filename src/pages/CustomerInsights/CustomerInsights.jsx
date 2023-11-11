@@ -8,10 +8,8 @@ const HOME_MAKERS = "Home Makers"
 const RETIREES = "Retirees"
 const BUSINESS_OWNERS = "Business Owners"
 
-import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, Legend } from 'recharts';
-import { Radar, RadarChart, PolarGrid, PolarAngleAxis, PolarRadiusAxis, ResponsiveContainer } from 'recharts';
-import { BarChart, Bar, Rectangle } from 'recharts';
-import { data_1, data_2, data_3, data_4, data_5 } from './CustomerInsights.config';
+import { Radar, RadarChart, PolarGrid, PolarAngleAxis, PolarRadiusAxis, ResponsiveContainer, PieChart, Pie, Tooltip } from 'recharts';
+import { data_1, data_2, data_4, data_5, data_6 } from './CustomerInsights.config';
 
 const CustomerInsights = () => {
 
@@ -64,9 +62,79 @@ const CustomerInsights = () => {
             </div>
 
             <div className='mt-10 mb-10 justify-evenly flex w-full flex-row'>
+                <div className="flex flex-row w-5/6 justify-evenly">
+                    <div className='bg-purple-100 text-center p-4 m-2 rounded-md'>
+                        <p>Total Market Share Capture</p>
+                        <p className="font-bold text-lg">30%</p>
+                    </div>
+                    <div className='bg-purple-100 text-center p-4 m-2 rounded-md'>
+                        <p>Total number of customers</p>
+                        <p className="font-bold text-lg">123,456</p>
+                    </div>
+                    <div className='bg-purple-100 text-center p-4 m-2 rounded-md'>
+                        <p>% share of segment among all customers</p>
+                        <p className="font-bold text-lg">11%</p>
+                    </div>
+                </div>
+            </div>
+
+            <div className='mt-10 mb-10 justify-evenly flex w-full flex-row'>
+                <div className="flex flex-row">
+                    <div className='w-1/2'>
+                        <p className="p-6">Breakdown by Gender </p>
+                        <PieChart width={350} height={250}>
+                            <Pie
+                                dataKey="value"
+                                isAnimationActive={false}
+                                data={data_4}
+                                cx="50%"
+                                cy="50%"
+                                outerRadius={80}
+                                fill="#9cccf7"
+                                label
+                            />
+                            <Tooltip />
+                        </PieChart>
+                    </div>
+                    <div className='w-1/2'>
+                        <p className="p-6">Breakdown by Age Group </p>
+                        <PieChart width={350} height={250}>
+                            <Pie
+                                dataKey="value"
+                                isAnimationActive={false}
+                                data={data_5}
+                                cx="50%"
+                                cy="50%"
+                                outerRadius={80}
+                                fill="#9cccf7"
+                                label
+                            />
+                            <Tooltip />
+                        </PieChart>
+                    </div>
+                    <div className='w-1/2'>
+                        <p className="p-6">Breakdown by Profession </p>
+                        <PieChart width={350} height={250}>
+                            <Pie
+                                dataKey="value"
+                                isAnimationActive={false}
+                                data={data_6}
+                                cx="50%"
+                                cy="50%"
+                                outerRadius={80}
+                                fill="#9cccf7"
+                                label
+                            />
+                            <Tooltip />
+                        </PieChart>
+                    </div>
+                </div>
+            </div>
+
+            <div className='mt-10 mb-10 justify-evenly flex w-full flex-row'>
                 <div className="flex flex-row">
                     <div className='w-1/2 mr-20'>
-                        <p className="p-6">Most Common Query Categories</p>
+                        <p className="p-6">Competitive Products / Services Used</p>
                         <ResponsiveContainer width={500} height={300}>
                             <RadarChart cx="50%" cy="50%" outerRadius="80%" data={data_1}>
                                 <PolarGrid />
@@ -89,7 +157,86 @@ const CustomerInsights = () => {
                     </div>
                 </div>
             </div>
-          
+
+            <div className='mt-10 mb-10 justify-evenly flex w-full flex-row'>
+                <div className="flex">
+                    <div className=''>
+                        <p className="p-6">Areas of Interests</p>
+                        <table className="border-collapse mt-4 mr-20 w-[500px]">
+                            <tr>
+                                <th className="border bg-gray-100 p-2">Query</th>
+                                <th className="border bg-gray-100 p-2">Rank</th>
+                                <th className="border bg-gray-100 p-2">Further Explanation</th>
+                            </tr>
+                            <tr>
+                                <td className="border border-gray-300 p-2 text-sm text-center">Personal Finance</td>
+                                <td className="border border-gray-300 p-2 text-sm text-center">1</td>
+                                <td className="border border-gray-300 p-2 text-sm text-center text-blue-400 underline">View</td>
+                            </tr>
+                            <tr>
+                                <td className="border border-gray-300 p-2 text-sm text-center">Fintech</td>
+                                <td className="border border-gray-300 p-2 text-sm text-center">2</td>
+                                <td className="border border-gray-300 p-2 text-sm text-center text-blue-400 underline">View</td>
+                            </tr>
+                            <tr>
+                                <td className="border border-gray-300 p-2 text-sm text-center">Wealth Management</td>
+                                <td className="border border-gray-300 p-2 text-sm text-center">3</td>
+                                <td className="border border-gray-300 p-2 text-sm text-center text-blue-400 underline">View</td>
+                            </tr>
+                            <tr>
+                                <td className="border border-gray-300 p-2 text-sm text-center">Investing</td>
+                                <td className="border border-gray-300 p-2 text-sm text-center">4</td>
+                                <td className="border border-gray-300 p-2 text-sm text-center text-blue-400 underline">View</td>
+                            </tr>
+                            <tr>
+                                <td className="border border-gray-300 p-2 text-sm text-center">Mobile Payments</td>
+                                <td className="border border-gray-300 p-2 text-sm text-center">5</td>
+                                <td className="border border-gray-300 p-2 text-sm text-center text-blue-400 underline">View</td>
+                            </tr>
+                        </table>
+                    </div>
+                    <div className='w-1/2'>
+                        <p className="p-6">Common Queries</p>
+                        <table className="border-collapse mt-4 w-[500px]">
+                            <tr>
+                                <th className="border bg-gray-100 w-1/6 p-2">Query</th>
+                                <th className="border bg-gray-100 w-1/6 p-2">Rank</th>
+                                <th className="border bg-gray-100 w-1/6 p-2">Further Explanation</th>
+                            </tr>
+                            <tr>
+                                <td className="border border-gray-300 p-2 text-sm text-center">Bank account setup</td>
+                                <td className="border border-gray-300 p-2 text-sm text-center">1</td>
+                                <td className="border border-gray-300 p-2 text-sm text-center text-blue-400 underline">View</td>
+                            </tr>
+                            <tr>
+                                <td className="border border-gray-300 p-2 text-sm text-center">E-wallet transfer</td>
+                                <td className="border border-gray-300 p-2 text-sm text-center">2</td>
+                                <td className="border border-gray-300 p-2 text-sm text-center text-blue-400 underline">View</td>
+                            </tr>
+                            <tr>
+                                <td className="border border-gray-300 p-2 text-sm text-center">Wealth management</td>
+                                <td className="border border-gray-300 p-2 text-sm text-center">3</td>
+                                <td className="border border-gray-300 p-2 text-sm text-center text-blue-400 underline">View</td>
+                            </tr>
+                            <tr>
+                                <td className="border border-gray-300 p-2 text-sm text-center">Check account balance</td>
+                                <td className="border border-gray-300 p-2 text-sm text-center">4</td>
+                                <td className="border border-gray-300 p-2 text-sm text-center text-blue-400 underline">View</td>
+                            </tr>
+                            <tr>
+                                <td className="border border-gray-300 p-2 text-sm text-center">Smart Investing</td>
+                                <td className="border border-gray-300 p-2 text-sm text-center">5</td>
+                                <td className="border border-gray-300 p-2 text-sm text-center text-blue-400 underline">View</td>
+                            </tr>
+                        </table>
+                    </div>
+
+                </div>
+            </div>
+
+
+
+
         </Layout>
     );
 };
