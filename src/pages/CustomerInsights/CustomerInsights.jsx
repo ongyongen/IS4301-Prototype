@@ -233,10 +233,6 @@ const CustomerInsights = () => {
 
                 </div>
             </div>
-
-
-
-
         </Layout>
     );
 };
