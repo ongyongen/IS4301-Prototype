@@ -1,4 +1,4 @@
-import { LANDING_PAGE, CHATBOT_INSIGHTS_DASHBOARD_PAGE, LOGIN_PAGE, SIGNUP_PAGE, CUSTOMER_INSIGHTS_DASHBOARD_PAGE } from '../../constants/routes';
+import { LANDING_PAGE, CHATBOT_INSIGHTS_DASHBOARD_PAGE, LOGIN_PAGE, SIGNUP_PAGE, CUSTOMER_INSIGHTS_DASHBOARD_PAGE, CUSTOMER_TABLE } from '../../constants/routes';
 import { UserAuth } from '../../context/AuthContext';
 import { useNavigate } from 'react-router-dom';
 
@@ -64,6 +64,14 @@ export const Navbar = () => {
                                 href={CUSTOMER_INSIGHTS_DASHBOARD_PAGE}
                             >
                                 Customer Insights
+                            </a>
+                        </li>
+                        <li className="mr-6">
+                            <a
+                                className="text-purple-500 hover:text-purple-800"
+                                href={CUSTOMER_TABLE}
+                            >
+                                Customer Table
                             </a>
                         </li>
                         <li className="mr-6">
