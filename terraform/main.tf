@@ -1,40 +1,11 @@
-# S3 bucket IAM policy 
-data "aws_iam_policy_document" "geotrails_frontend_iam_policy" {
-  statement {
-    
-    effect = "Allow"
-
-    principals {
-      type        = "AWS"
-      identifiers = [aws_cloudfront_origin_access_identity.geotrails_frontend_oai.iam_arn]
-    }
-
-    actions = [
-      "s3:GetObject",
-      "s3:ListBucket",
-      "s3:PutObject",
-      "s3:DeleteObject",
-      "s3:PutBucketPolicy",
-      "s3:PutBucketPublicAccessBlock",
-      "s3:GetBucketAcl",
-      "s3:PutBucketAcl"
-    ]
-    
-    resources = [
-      aws_s3_bucket.geotrails_frontend.arn,
-      "${aws_s3_bucket.geotrails_frontend.arn}/*",
-    ]
-  }
-}
-
 # Create an S3 bucket
-resource "aws_s3_bucket" "geotrails_frontend" {
-  bucket = "geotrails-frontend"
+resource "aws_s3_bucket" "is4301_frontend" {
+  bucket = "is4301-frontend"
 }
 
 # Configure S3 bucket to allow allow access via cloudfront
-resource "aws_s3_bucket_public_access_block" "geotrails_frontend" {
-  bucket = aws_s3_bucket.geotrails_frontend.id
+resource "aws_s3_bucket_public_access_block" "is4301_frontend" {
+  bucket = aws_s3_bucket.is4301_frontend.id
 
   block_public_acls = true
   block_public_policy = true
@@ -43,22 +14,22 @@ resource "aws_s3_bucket_public_access_block" "geotrails_frontend" {
 }
 
 # Configure ownership control for S3 bucket
-resource "aws_s3_bucket_ownership_controls" "geotrails_frontend_ownership_control" {
-  bucket = aws_s3_bucket.geotrails_frontend.id
+resource "aws_s3_bucket_ownership_controls" "is4301_frontend_ownership_control" {
+  bucket = aws_s3_bucket.is4301_frontend.id
   rule {
     object_ownership = "BucketOwnerPreferred"
   }
 }
 
 # Configure S3 bucket IAM policy 
-resource "aws_s3_bucket_policy" "geotrails_frontend_iam_policy" {
-  bucket = aws_s3_bucket.geotrails_frontend.id
-  policy = data.aws_iam_policy_document.geotrails_frontend_iam_policy.json
+resource "aws_s3_bucket_policy" "is4301_frontend_iam_policy" {
+  bucket = aws_s3_bucket.is4301_frontend.id
+  policy = data.aws_iam_policy_document.is4301_frontend_iam_policy.json
 }
 
 # Configure S3 buckets default and error routes 
-resource "aws_s3_bucket_website_configuration" "geotrails_frontend_config" {
-  bucket = aws_s3_bucket.geotrails_frontend.id
+resource "aws_s3_bucket_website_configuration" "is4301_frontend_config" {
+  bucket = aws_s3_bucket.is4301_frontend.id
 
   index_document {
     suffix = "index.html"
@@ -70,8 +41,8 @@ resource "aws_s3_bucket_website_configuration" "geotrails_frontend_config" {
 }
 
 # Configure S3 bucket CORS 
-resource "aws_s3_bucket_cors_configuration" "geotrails_frontend" {
-  bucket = aws_s3_bucket.geotrails_frontend.bucket
+resource "aws_s3_bucket_cors_configuration" "is4301_frontend" {
+  bucket = aws_s3_bucket.is4301_frontend.bucket
 
   cors_rule {
     allowed_headers = ["*"]
@@ -82,16 +53,16 @@ resource "aws_s3_bucket_cors_configuration" "geotrails_frontend" {
 }
 
 # Create a cloudfront distribution for S3 bucket using Origin Access Identity (OAI) for origin access control
-resource "aws_cloudfront_origin_access_identity" "geotrails_frontend_oai" {
-  comment = "Geotrails Frontend Origin Access Identity"
+resource "aws_cloudfront_origin_access_identity" "is4301_frontend_oai" {
+  comment = "IS4301 Frontend Origin Access Identity"
 }
 
-resource "aws_cloudfront_distribution" "geotrails_frontend_distribution" {
+resource "aws_cloudfront_distribution" "is4301_frontend_distribution" {
   origin {
-    domain_name = aws_s3_bucket.geotrails_frontend.bucket_regional_domain_name
+    domain_name = aws_s3_bucket.is4301_frontend.bucket_regional_domain_name
     origin_id   = "my_s3_origin"
     s3_origin_config {
-      origin_access_identity = aws_cloudfront_origin_access_identity.geotrails_frontend_oai.cloudfront_access_identity_path
+      origin_access_identity = aws_cloudfront_origin_access_identity.is4301_frontend_oai.cloudfront_access_identity_path
     }
   }
 
@@ -140,23 +111,3 @@ resource "aws_cloudfront_distribution" "geotrails_frontend_distribution" {
   enabled = true
 
 }
-
-output "app_url" {
-  value = aws_cloudfront_distribution.geotrails_frontend_distribution.domain_name
-}
-
-terraform {
-  required_providers {
-    aws = {
-      source  = "hashicorp/aws"
-      version = "5.10.0"
-    }
-  }
-}
-
-provider "aws" {
-  access_key = var.AWS_ACCESS_KEY
-  secret_key = var.AWS_SECRET_KEY
-  region     = var.region
-}
-
