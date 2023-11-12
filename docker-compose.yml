@@ -1,0 +1,8 @@
+services:
+  frontend:
+    image:
+      is4301
+    build:
+      context: .
+    ports:
+      - "5173:3000"
